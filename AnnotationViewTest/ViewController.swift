@@ -41,6 +41,7 @@ extension ViewController: MKMapViewDelegate {
         return markerAnnotationView
     }
     
+    /// MKMarkerAnnotationViewの細かい設定をする
     private func configureMarkerAnnotationView(markerAnnotationView: MKMarkerAnnotationView, shopAnnotation: ShopAnnotation) {
         markerAnnotationView.clusteringIdentifier = ShopAnnotation.clusteringIdentifier
         markerAnnotationView.canShowCallout = true
@@ -55,6 +56,7 @@ extension ViewController: MKMapViewDelegate {
         markerAnnotationView.detailCalloutAccessoryView = detailLabel
     }
     
+    /// 店舗詳細を表示する際には、shopを渡すためにannotationを渡してあげる。
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,                 calloutAccessoryControlTapped control: UIControl) {
         guard let shopAnnotaion = view.annotation as? ShopAnnotation else { return }
         performSegue(withIdentifier: "Segue", sender: shopAnnotaion)
